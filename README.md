@@ -6,24 +6,26 @@ Portfolio computer-vision prototype for retail loss-prevention support using YOL
 - Recorded CCTV/video upload
 - YOLO person detection and multi-object tracking
 - Adjustable detection confidence
-- Configurable exit/review zone
-- Dwell-time based **Review Required** events
-- Unique tracked-person and event metrics
+- Two configurable monitoring zones: **Checkout** and **Exit / Review**
+- Per-zone dwell-time based **Review Required** events
+- Unique tracked-person, frame, event and video-time metrics
+- Incident snapshot capture and preview
 - Incident review table
 - CSV event export
+- Individual JPG snapshot download
 
 > The system does **not** identify a person as a shoplifter and does not perform face recognition. Alerts are neutral decision-support signals that require human verification.
 
 ## How the demo works
-The right side of the video is treated as a configurable monitored zone. When a tracked person remains in that zone longer than the selected dwell threshold, the system creates one review event. This is intentionally a transparent demonstration rule, not a claim that theft occurred.
+The left and right portions of the video can be configured as checkout and exit/review zones. When a tracked person remains in either monitored zone longer than the selected dwell threshold, the system creates a review event and captures an incident snapshot. This is intentionally a transparent demonstration rule, not a claim that theft occurred.
 
 ## Tech Stack
 Python · Ultralytics YOLO · OpenCV · Streamlit · Pandas
 
 ## Files
-- `app.py` — Streamlit dashboard and video-processing loop
+- `app.py` — Streamlit dashboard, video loop, metrics and snapshots
 - `detector.py` — YOLO detection/tracking wrapper
-- `event_engine.py` — zone and human-review event logic
+- `event_engine.py` — multi-zone and human-review event logic
 - `requirements.txt` — dependencies
 
 ## Run locally
@@ -38,4 +40,4 @@ The YOLO model weights are downloaded by Ultralytics on first use.
 Use sample, synthetic, licensed, or otherwise authorized footage. This portfolio project avoids identity recognition and automated accusations. Any event must be reviewed by a human with the surrounding video context.
 
 ## Next planned improvements
-Incident snapshots, configurable multi-zone layout, richer analytics, demo video, and deployment hardening.
+Dashboard analytics, incident severity/rule configuration, demo assets, automated tests, and Streamlit deployment hardening.
